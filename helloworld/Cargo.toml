@@ -1,0 +1,11 @@
+[package]
+name = "helloworld"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+
+# ビルドした時の実行バイナリのファイル名を指定する
+[[bin]]
+name = "app"
+path = "src/main.rs"

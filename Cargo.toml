@@ -1,0 +1,2 @@
+[workspace]
+members = [ "helloworld","rusty-book-manager"]
