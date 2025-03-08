@@ -1,6 +1,8 @@
 # rust-webapp
 
-# フロントエンドの環境構築
+## 第1章
+
+### フロントエンドの環境構築
 
 ```shell
 # リポジトリのクローン
@@ -13,7 +15,9 @@ npm run dev
 # ブラウザなどでlocalhost:3000にアクセスする
 ```
 
-# クレートの追加
+## 第2章
+
+### クレートの追加
 
 ```shell
 cargo add axum@0.7.5 --features macros
@@ -21,7 +25,7 @@ cargo add tokio@1.37.0 --features full
 cargo add --dev rstest@0.18.2
 ```
 
-# p44 実行
+### p44 実行
 
 ```shell
 # サーバーを起動する
@@ -30,29 +34,27 @@ cargo run
 curl localhost:8080/hello -v
 ```
 
-# p48 anyhowの追加
+### p48 anyhowの追加
 
 ```shell
 cargo add anyhow@1.0.75
 ```
 
-# p49 impl IntoResponce
+### p49 impl IntoResponce
 
 ハンドラの返り値はIntoResponceトレイトを実装している。
 
 https://docs.rs/axum/0.7.5/axum/response/trait.IntoResponse.html
 
 
-
-
-# p51 動作確認
+### p51 動作確認
 
 ``` shell
 cargo run
 curl localhost:8080/health -v
 ```
 
-# p53 cargo-nextest
+### p53 cargo-nextest
 
 https://nexte.st/
 
@@ -64,21 +66,21 @@ cargo install cargo-nextest
 cargo nextest run
 ```
 
-# p54 sqlxのインストール
+### p54 sqlxのインストール
 
 ``` shell
 cargo add sqlx@0.7.3 --features runtime-tokio,uuid,chrono,macros,postgres,migrate
 ```
 
-# p55 コネクションプール
+### p55 コネクションプール
 
 https://wa3.i-3-i.info/word12762.html
 
-# p56 axum State機能
+### p56 axum State機能
 
 ハンドラ間で状態を共有できる機能
 
-# p59 データベースのユニットテスト
+### p59 データベースのユニットテスト
 
 ``` shell
 # PostgresSQLを起動していなければ起動する
@@ -87,7 +89,7 @@ cargo make before-build
 cargo make test
 ```
 
-# p59 エンドポイントの動作確認
+### p59 エンドポイントの動作確認
 
 ``` shell
 cargo make run
@@ -117,4 +119,13 @@ lsof -i :5432
 docker ps | grep postgres  
 # 該当するコンテナを停止
 docker stop <コンテナID>   
+```
+
+## 第4章
+
+### p95, 96
+
+``` shell
+cargo make run
+curl -v http://localhost:8080/health/db
 ```
