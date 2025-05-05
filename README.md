@@ -129,3 +129,45 @@ docker stop <コンテナID>
 cargo make run
 curl -v http://localhost:8080/health/db
 ```
+
+## 第5章
+
+### p99
+
+マイグレーションファイルの作成
+
+```shell
+# sqlx migrate add : マイグレーションファイルを作成
+# -r : up/downの2つのファイルを作成
+# start : ファイル名に含む識別子
+# --source : 保存先のディレクトリを指定
+sqlx migrate add -r start --source adapter/migrations
+```
+
+sqlxをインストールした。
+https://formulae.brew.sh/formula/sqlx-cli
+
+upとつくファイル：マイグレーション時に実行されるSQL
+downとつくファイル：マイグレーションを巻き戻す時に実行されるファイル
+
+```shell
+# PostgresSQLのコンテナを起動
+cargo make compose-up-db
+# マイグレーションを実行する
+cargo make migrate
+# ビルド
+cargo make build
+# 巻き戻し
+cargo make sqlx migrate revert
+# Docker Compose関連のデータを全て削除する
+cargo make compose-remove
+# データベースへの接続
+cargo make psql
+# テーブルの中身の確認
+\d books
+# 終了
+
+```
+
+
+
